@@ -69,7 +69,7 @@ class _SigninViewBodyState extends State<SigninViewBody> {
               ),
               const SizedBox(height: 48.0),
               MainButton(
-                text: 'Login',
+                text: 'Sign In',
                 hasCircularBorder: true,
                 onTap: () {
                   if (formKey.currentState!.validate()) {
@@ -101,7 +101,7 @@ class _SigninViewBodyState extends State<SigninViewBody> {
                 children: [
                   SocialLoginButton(
                     iconPath: 'assets/icons/google.png',
-                    onTap: () => print('Google login tapped'),
+                    onTap: () => context.read<SigninCubit>().signinWithGoogle(),
                   ),
                   const SizedBox(width: 10),
                   SocialLoginButton(

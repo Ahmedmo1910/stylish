@@ -24,7 +24,7 @@ class HaveAccountWidget extends StatelessWidget {
                 ..onTap = () {
                   Navigator.pop(context);
                 },
-              text: 'Login',
+              text: 'Sign In',
               style: AppTextStyles.semiBold14.copyWith(
                 color: AppColors.primaryColor,
                 decoration: TextDecoration.underline,

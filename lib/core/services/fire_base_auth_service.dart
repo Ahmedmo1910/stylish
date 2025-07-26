@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:stylish/core/errors/exceptions.dart';
 
 class FireBaseAuthService {
@@ -33,11 +34,11 @@ class FireBaseAuthService {
       throw CustomException(message: 'An unknown error occurred: $e');
     }
   }
+
   Future<User> signInWithEmailAndPassword(
       {required String email, required String password}) async {
     try {
-      final credential =
-          await FirebaseAuth.instance.signInWithEmailAndPassword(
+      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
@@ -60,5 +61,19 @@ class FireBaseAuthService {
       log('Exception in FirebaseAuthService.signInWithEmailAndPassword: ${e.toString()}');
       throw CustomException(message: 'An unknown error occurred: $e');
     }
+  }
+
+  Future<User> signInWithGoogle() async {
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+    final GoogleSignInAuthentication? googleAuth =
+        await googleUser?.authentication;
+
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
+
+    return (await FirebaseAuth.instance.signInWithCredential(credential)).user!;
   }
 }

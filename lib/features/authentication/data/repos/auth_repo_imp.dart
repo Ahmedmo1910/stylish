@@ -39,4 +39,17 @@ class AuthRepoImp extends AuthRepo {
       return left(ServerFailure('An unknown error occurred: $e'));
     }
   }
+
+  @override
+  Future<Either<Failure, UserEntity>> signInWithGoogle() async {
+    try {
+      var user = await fireBaseAuthService.signInWithGoogle();
+      return right(UserModel.fromFireBaseUser(user));
+    } on CustomException catch (e) {
+      return left(ServerFailure(e.message));
+    } catch (e) {
+      log('Exception in AuthRepoIml.signInWithGoogle: ${e.toString()}');
+      return left(ServerFailure('An unknown error occurred,Please try again.'));
+    }
+  }
 }
