@@ -52,4 +52,17 @@ class AuthRepoImp extends AuthRepo {
       return left(ServerFailure('An unknown error occurred,Please try again.'));
     }
   }
+
+  @override
+  Future<Either<Failure, UserEntity>> signInWithFacebook() async {
+    try {
+      var user = await fireBaseAuthService.signInWithFacebook();
+      return right(UserModel.fromFireBaseUser(user));
+    } on CustomException catch (e) {
+      return left(ServerFailure(e.message));
+    } catch (e) {
+      log('Exception in AuthRepoIml.signInWithFacebook: ${e.toString()}');
+      return left(ServerFailure('An unknown error occurred,Please try again.'));
+    }
+  }
 }

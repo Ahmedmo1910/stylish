@@ -111,7 +111,8 @@ class _SigninViewBodyState extends State<SigninViewBody> {
                   const SizedBox(width: 10),
                   SocialLoginButton(
                     iconPath: 'assets/icons/facebook.png',
-                    onTap: () => print('Facebook login tapped'),
+                    onTap: () =>
+                        context.read<SigninCubit>().signinWithFacebook(),
                   ),
                 ],
               ),
