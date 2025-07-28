@@ -69,7 +69,8 @@ class FireBaseAuthService {
 
   Future<User> signInWithGoogle() async {
     try {
-      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      final GoogleSignInAccount? googleUser =
+          await GoogleSignIn(scopes: ['profile', 'email']).signIn();
       if (googleUser == null) {
         throw CustomException(message: 'Google sign-in cancelled.');
       }
