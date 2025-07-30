@@ -65,4 +65,19 @@ class AuthRepoImp extends AuthRepo {
       return left(ServerFailure('An unknown error occurred,Please try again.'));
     }
   }
+  /*
+  ! maybe later when i have a mac to test it
+  @override
+  Future<Either<Failure, UserEntity>> signInWithApple() async {
+    try {
+      var user = await fireBaseAuthService.signInWithApple();
+      return right(UserModel.fromFireBaseUser(user));
+    } on CustomException catch (e) {
+      return left(ServerFailure(e.message));
+    } catch (e) {
+      log('Exception in AuthRepoIml.signInWithApple: ${e.toString()}');
+      return left(ServerFailure('An unknown error occurred,Please try again.'));
+    }
+  }
+  */
 }

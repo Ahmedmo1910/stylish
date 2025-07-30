@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stylish/core/utils/app_colors.dart';
@@ -104,10 +106,12 @@ class _SigninViewBodyState extends State<SigninViewBody> {
                     onTap: () => context.read<SigninCubit>().signinWithGoogle(),
                   ),
                   const SizedBox(width: 10),
-                  SocialLoginButton(
-                    iconPath: 'assets/icons/apple.png',
-                    onTap: () => print('Apple login tapped'),
-                  ),
+                  Platform.isIOS
+                      ? SocialLoginButton(
+                          iconPath: 'assets/icons/apple.png',
+                          onTap: () => print('Apple login tapped'),
+                        )
+                      : const SizedBox(),
                   const SizedBox(width: 10),
                   SocialLoginButton(
                     iconPath: 'assets/icons/facebook.png',
