@@ -7,6 +7,10 @@ import 'package:stylish/core/errors/exceptions.dart';
 class FireBaseAuthService {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
+  Future deleteUser() async {
+    FirebaseAuth.instance.currentUser!.delete();
+  }
+
   Future<User> createUserWithEmailAndPassword({
     required String email,
     required String password,
