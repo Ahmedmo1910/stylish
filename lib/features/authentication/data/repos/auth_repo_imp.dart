@@ -30,16 +30,18 @@ class AuthRepoImp extends AuthRepo {
       await addUserData(user: userEntity);
       return right(userEntity);
     } on CustomException catch (e) {
-      if (user != null) {
-        await fireBaseAuthService.deleteUser();
-      }
+      await deleteUser(user);
       return left(ServerFailure(e.message));
     } catch (e) {
-      if (user != null) {
-        await fireBaseAuthService.deleteUser();
-      }
+      await deleteUser(user);
       log('Exception in AuthRepoIml.createUserWithEmailAndPassword: ${e.toString()}');
       return left(ServerFailure('An unknown error occurred: $e'));
+    }
+  }
+
+  Future<void> deleteUser(User? user) async {
+    if (user != null) {
+      await fireBaseAuthService.deleteUser();
     }
   }
 
@@ -60,12 +62,17 @@ class AuthRepoImp extends AuthRepo {
 
   @override
   Future<Either<Failure, UserEntity>> signInWithGoogle() async {
+    User? user;
     try {
-      var user = await fireBaseAuthService.signInWithGoogle();
-      return right(UserModel.fromFireBaseUser(user));
+      user = await fireBaseAuthService.signInWithGoogle();
+      var userEntity = UserModel.fromFireBaseUser(user);
+      await addUserData(user: userEntity);
+      return right(userEntity);
     } on CustomException catch (e) {
+      await deleteUser(user);
       return left(ServerFailure(e.message));
     } catch (e) {
+      await deleteUser(user);
       log('Exception in AuthRepoIml.signInWithGoogle: ${e.toString()}');
       return left(ServerFailure('An unknown error occurred,Please try again.'));
     }
@@ -73,12 +80,17 @@ class AuthRepoImp extends AuthRepo {
 
   @override
   Future<Either<Failure, UserEntity>> signInWithFacebook() async {
+    User? user;
     try {
-      var user = await fireBaseAuthService.signInWithFacebook();
-      return right(UserModel.fromFireBaseUser(user));
+      user = await fireBaseAuthService.signInWithFacebook();
+      var userEntity = UserModel.fromFireBaseUser(user);
+      await addUserData(user: userEntity);
+      return right(userEntity);
     } on CustomException catch (e) {
+      await deleteUser(user);
       return left(ServerFailure(e.message));
     } catch (e) {
+      await deleteUser(user);
       log('Exception in AuthRepoIml.signInWithFacebook: ${e.toString()}');
       return left(ServerFailure('An unknown error occurred,Please try again.'));
     }
