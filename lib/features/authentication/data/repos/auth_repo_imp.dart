@@ -51,7 +51,8 @@ class AuthRepoImp extends AuthRepo {
     try {
       var user = await fireBaseAuthService.signInWithEmailAndPassword(
           email: email, password: password);
-      return right(UserModel.fromFireBaseUser(user));
+      var userEntity = await getUserData(uid: user.uid);
+      return right(userEntity);
     } on CustomException catch (e) {
       return left(ServerFailure(e.message));
     } catch (e) {
@@ -66,7 +67,13 @@ class AuthRepoImp extends AuthRepo {
     try {
       user = await fireBaseAuthService.signInWithGoogle();
       var userEntity = UserModel.fromFireBaseUser(user);
-      await addUserData(user: userEntity);
+      var isUserExist = await databaseService.checkIfDataExists(
+          path: BackendEndpoint.isUserExist, documentId: user.uid);
+      if (isUserExist) {
+        await getUserData(uid: user.uid);
+      } else {
+        await addUserData(user: userEntity);
+      }
       return right(userEntity);
     } on CustomException catch (e) {
       await deleteUser(user);
@@ -84,7 +91,15 @@ class AuthRepoImp extends AuthRepo {
     try {
       user = await fireBaseAuthService.signInWithFacebook();
       var userEntity = UserModel.fromFireBaseUser(user);
-      await addUserData(user: userEntity);
+      var isUserExist = await databaseService.checkIfDataExists(
+        path: BackendEndpoint.isUserExist,
+        documentId: user.uid,
+      );
+      if (isUserExist) {
+        await getUserData(uid: user.uid);
+      } else {
+        await addUserData(user: userEntity);
+      }
       return right(userEntity);
     } on CustomException catch (e) {
       await deleteUser(user);
@@ -99,7 +114,19 @@ class AuthRepoImp extends AuthRepo {
   @override
   Future addUserData({required UserEntity user}) async {
     await databaseService.addData(
-        path: BackendEndpoint.addUserData, data: user.toMap());
+      path: BackendEndpoint.addUserData,
+      data: user.toMap(),
+      documentId: user.uId,
+    );
+  }
+
+  @override
+  Future<UserEntity> getUserData({required String uid}) async {
+    var userData = await databaseService.getData(
+      path: BackendEndpoint.getUserData,
+      documentId: uid,
+    );
+    return UserModel.fromJson(userData);
   }
   /*
   ! maybe later when i have a mac to test it
