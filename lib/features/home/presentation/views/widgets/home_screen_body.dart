@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:stylish/core/widgets/search_text_field.dart';
 import 'package:stylish/features/home/presentation/views/widgets/custom_home_app_bar.dart';
+import 'package:stylish/features/home/presentation/views/widgets/featured_categories.dart';
+import 'package:stylish/features/home/presentation/views/widgets/featured_filter.dart';
 import 'package:stylish/features/home/presentation/views/widgets/featured_item.dart';
 
 class HomeScreenBody extends StatelessWidget {
@@ -18,6 +20,11 @@ class HomeScreenBody extends StatelessWidget {
                 CustomHomeAppBar(),
                 SizedBox(height: 16.0),
                 SearchTextField(),
+                SizedBox(height: 16.0),
+                FeaturedFilter(),
+                SizedBox(height: 16.0),
+                FeaturedCategories(),
+                SizedBox(height: 16.0),
                 FeaturedItem(),
               ],
             ),

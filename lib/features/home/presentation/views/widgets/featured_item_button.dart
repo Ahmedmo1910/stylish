@@ -9,7 +9,7 @@ class FeaturedItemButton extends StatelessWidget {
     return GestureDetector(
       child: Container(
         width: MediaQuery.of(context).size.width * 0.34,
-        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+        padding: const EdgeInsets.symmetric(vertical: 8.0),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8.0),
           border: Border.all(
@@ -18,6 +18,7 @@ class FeaturedItemButton extends StatelessWidget {
           ),
         ),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
               'Shop Now',
@@ -25,7 +26,6 @@ class FeaturedItemButton extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-            const Spacer(),
             const Icon(
               Icons.arrow_forward,
               color: Colors.white,
