@@ -60,7 +60,10 @@ class FeaturedItem extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 14),
-                    const FeaturedItemButton(),
+                    const FeaturedItemButton(
+                      text: 'Shop Now',
+                      width: 0.29,
+                    ),
                   ],
                 ),
               ),

@@ -117,4 +117,9 @@ abstract class AppTextStyles {
     fontWeight: FontWeight.w400,
     fontFamily: fontFamily,
   );
+  static const TextStyle small10 = TextStyle(
+    fontSize: 10,
+    fontWeight: FontWeight.w400,
+    fontFamily: fontFamily,
+  );
 }

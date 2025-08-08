@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:stylish/core/widgets/search_text_field.dart';
+import 'package:stylish/features/home/presentation/views/widgets/best_selling.dart';
 import 'package:stylish/features/home/presentation/views/widgets/custom_home_app_bar.dart';
 import 'package:stylish/features/home/presentation/views/widgets/featured_categories.dart';
 import 'package:stylish/features/home/presentation/views/widgets/featured_filter.dart';
 import 'package:stylish/features/home/presentation/views/widgets/featured_list.dart';
+import 'package:stylish/features/home/presentation/views/widgets/trending_product_grid_view.dart';
 
 class HomeScreenBody extends StatelessWidget {
   const HomeScreenBody({super.key});
@@ -26,9 +28,13 @@ class HomeScreenBody extends StatelessWidget {
                 FeaturedCategories(),
                 SizedBox(height: 16.0),
                 FeaturedList(),
+                SizedBox(height: 16.0),
+                BestSelling(),
+                SizedBox(height: 16.0),
               ],
             ),
-          )
+          ),
+          TrendingProductGridView(),
         ],
       ),
     );
