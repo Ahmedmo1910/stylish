@@ -31,15 +31,20 @@ class ProductItem extends StatelessWidget {
                     'assets/images/onBoarding1.png',
                   ),
                   ListTile(
+                    minVerticalPadding: 4.0,
                     contentPadding: EdgeInsets.zero,
-                    horizontalTitleGap: 0,
+                    horizontalTitleGap: -12.0,
                     title: const Text(
                       'product name',
                       style: AppTextStyles.regular12,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
                     ),
                     subtitle: const Text(
-                      'product category',
+                      'product description goe here and it can be long text',
                       style: AppTextStyles.small10,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
                     ),
                     trailing: IconButton(
                       onPressed: () {

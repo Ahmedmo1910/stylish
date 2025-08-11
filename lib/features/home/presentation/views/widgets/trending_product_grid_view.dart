@@ -9,7 +9,7 @@ class TrendingProductGridView extends StatelessWidget {
     return SliverGrid.builder(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        childAspectRatio: 170 / 258,
+        childAspectRatio: 170 / 250,
         crossAxisSpacing: 12.0,
         mainAxisSpacing: 8.0,
       ),
