@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stylish/core/utils/app_text_styles.dart';
 import 'package:stylish/features/home/presentation/views/widgets/featured_item_button.dart';
+import 'package:stylish/features/trending_products/presentation/view/trending_product_screen.dart';
 
 class BestSelling extends StatelessWidget {
   const BestSelling({super.key});
@@ -22,7 +23,13 @@ class BestSelling extends StatelessWidget {
             ),
           ),
           const Spacer(),
-          const FeaturedItemButton(text: 'View All', width: 0.27),
+          FeaturedItemButton(
+            onTap: () {
+              Navigator.pushNamed(context, TrendingProductScreen.routeName);
+            },
+            text: 'View All',
+            width: 0.27,
+          ),
         ],
       ),
     );

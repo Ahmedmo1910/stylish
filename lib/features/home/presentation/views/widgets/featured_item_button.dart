@@ -5,15 +5,18 @@ import 'package:stylish/core/utils/app_text_styles.dart';
 class FeaturedItemButton extends StatelessWidget {
   final String text;
   final double width;
+  final VoidCallback? onTap;
   const FeaturedItemButton({
     super.key,
     required this.text,
     required this.width,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: onTap,
       child: Container(
         width: MediaQuery.of(context).size.width * width,
         padding: const EdgeInsets.symmetric(vertical: 8.0),

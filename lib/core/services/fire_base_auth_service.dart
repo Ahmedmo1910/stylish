@@ -132,6 +132,7 @@ class FireBaseAuthService {
       throw CustomException(message: 'An unknown error occurred: $e');
     }
   }
+
 /* 
 
  ! maybe later when i have a mac to test it
@@ -180,4 +181,7 @@ class FireBaseAuthService {
         .user!;
   }
   */
+  bool isLoggedIn() {
+    return FirebaseAuth.instance.currentUser != null;
+  }
 }
