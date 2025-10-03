@@ -12,7 +12,20 @@
           "package_name": "com.example.stylish"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "732124150275-s0fp0ghf130fq5p623p5k7q2kdoq667t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.stylish",
+            "certificate_hash": "6ce02e8bf5769ef3189932a4d89e5085aae2fcae"
+          }
+        },
+        {
+          "client_id": "732124150275-4qqaa2cj95ovk6if6hso867qm1ek5psb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCYVwKmzgSKzGwmCAK3C64kzvpF-xHt1SQ"
@@ -20,7 +33,55 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "732124150275-4qqaa2cj95ovk6if6hso867qm1ek5psb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "732124150275-26q1ufiaj7dv3ivqm1c5jh0h99posoku.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.stylishDashboard"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:732124150275:android:81226fbfea3d1ab64eac36",
+        "android_client_info": {
+          "package_name": "com.example.stylish_dashboard"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "732124150275-4qqaa2cj95ovk6if6hso867qm1ek5psb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYVwKmzgSKzGwmCAK3C64kzvpF-xHt1SQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "732124150275-4qqaa2cj95ovk6if6hso867qm1ek5psb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "732124150275-26q1ufiaj7dv3ivqm1c5jh0h99posoku.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.stylishDashboard"
+              }
+            }
+          ]
         }
       }
     }

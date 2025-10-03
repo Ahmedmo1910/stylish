@@ -20,7 +20,9 @@ class FireBaseAuthService {
         email: email,
         password: password,
       );
+      print(credential.user!.uid);
       return credential.user!;
+      
     } on FirebaseAuthException catch (e) {
       log('[Register Error] ${e.code}: ${e.message}');
       switch (e.code) {
@@ -74,7 +76,7 @@ class FireBaseAuthService {
   Future<User> signInWithGoogle() async {
     try {
       final GoogleSignInAccount? googleUser =
-          await GoogleSignIn(scopes: ['profile', 'email']).signIn();
+          await GoogleSignIn().signIn();
       if (googleUser == null) {
         throw CustomException(message: 'Google sign-in cancelled.');
       }

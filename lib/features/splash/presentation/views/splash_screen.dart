@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:stylish/constants.dart';
 import 'package:stylish/core/services/fire_base_auth_service.dart';
