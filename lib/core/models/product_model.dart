@@ -1,5 +1,6 @@
 import 'dart:io';
-import 'package:stylish/core/entities/review_entity.dart';
+import 'package:stylish/core/entities/product_entity.dart';
+import 'package:stylish/core/models/review_model.dart';
 
 class ProductModel {
   final String name;
@@ -12,7 +13,7 @@ class ProductModel {
   final File imageFile;
   final num avgRating;
   final num ratingCount;
-  final List<ReviewEntity> reviews;
+  final List<ReviewModel> reviews;
 
   ProductModel({
     required this.name,
@@ -27,7 +28,32 @@ class ProductModel {
     this.avgRating = 0,
     this.ratingCount = 0,
   });
-
+  factory ProductModel.fromJson(Map<String, dynamic> json) {
+    return ProductModel(
+      name: json['name'],
+      category: json['category'],
+      price: json['price'],
+      code: json['code'],
+      description: json['description'],
+      sellingCount: json['sellingCount'],
+      imageFile: File(json['imageUrl']),
+      reviews: json['reviews'] != null
+          ? List<ReviewModel>.from(
+              json['reviews'].map((review) => ReviewModel.fromJson(review)))
+          : [],
+    );
+  }
+ ProductEntity toEntity() {
+    return ProductEntity(
+      name: name,
+      category: category,
+      price: price,
+      code: code,
+      description: description,
+      imageFile: imageFile,
+      reviews: reviews.map((e) => e.toEntity()).toList(),
+    );
+  }
 
   toJson() {
     return {
