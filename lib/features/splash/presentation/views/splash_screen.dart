@@ -3,7 +3,7 @@ import 'package:stylish/constants.dart';
 import 'package:stylish/core/services/fire_base_auth_service.dart';
 import 'package:stylish/core/services/shared_preferences_singleton.dart';
 import 'package:stylish/features/authentication/presentation/view/signin_screen.dart';
-import 'package:stylish/features/home/presentation/views/home_screen.dart';
+import 'package:stylish/features/home/presentation/views/main_screen.dart';
 import '../../../on_boarding/presentation/views/on_boarding_screen.dart';
 import 'widgets/splash_screen_body.dart';
 
@@ -37,7 +37,7 @@ class _SplashScreenState extends State<SplashScreen> {
       if (isOnBoardingViewSeen) {
         var isLoggedIn = FireBaseAuthService().isLoggedIn();
         if (isLoggedIn) {
-          Navigator.pushReplacementNamed(context, HomeScreen.routeName);
+          Navigator.pushReplacementNamed(context, MainScreen.routeName);
         } else {
           Navigator.pushReplacementNamed(context, SigninScreen.routeName);
         }

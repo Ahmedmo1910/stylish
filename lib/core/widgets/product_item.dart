@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:skeletonizer/skeletonizer.dart';
+import 'package:stylish/core/entities/product_entity.dart';
 import 'package:stylish/core/utils/app_text_styles.dart';
+import 'package:stylish/core/widgets/custom_product_image.dart';
 
 class ProductItem extends StatelessWidget {
-  const ProductItem({super.key});
+  const ProductItem({super.key, required this.productEntity});
 
+  final ProductEntity productEntity;
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 170,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(6.0),
@@ -22,60 +27,68 @@ class ProductItem extends StatelessWidget {
       child: Stack(
         children: [
           Positioned.fill(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 6.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Image.asset(
-                    'assets/images/onBoarding1.png',
-                  ),
-                  ListTile(
-                    minVerticalPadding: 4.0,
-                    contentPadding: EdgeInsets.zero,
-                    horizontalTitleGap: -12.0,
-                    title: const Text(
-                      'product name',
-                      style: AppTextStyles.regular12,
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 1,
-                    ),
-                    subtitle: const Text(
-                      'product description goe here and it can be long text',
-                      style: AppTextStyles.small10,
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 2,
-                    ),
-                    trailing: IconButton(
-                      onPressed: () {
-                        print('Cart button pressed');
-                      },
-                      icon: SvgPicture.asset('assets/icons/cart.svg'),
-                    ),
-                  ),
-                  const Text(
-                    'price after discount',
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CustomProductImage(
+                  productEntity: productEntity,
+                  imageUrl: productEntity.imageUrl,
+                ),
+                ListTile(
+                  minTileHeight: 56.0,
+                  minVerticalPadding: 4.0,
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 6.0),
+                  horizontalTitleGap: -12.0,
+                  title: Text(
+                    productEntity.name,
                     style: AppTextStyles.regular12,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
                   ),
-                  RichText(
-                    text: TextSpan(
-                      text: 'price before discount',
-                      style: AppTextStyles.small12.copyWith(
-                        decoration: TextDecoration.lineThrough,
-                        color: const Color(0xFFBBBBBB),
+                  subtitle: Text(
+                    productEntity.description,
+                    style: AppTextStyles.small10,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
+                  ),
+                  trailing: IconButton(
+                    onPressed: () {
+                      print('Cart button pressed');
+                    },
+                    icon: SvgPicture.asset('assets/icons/cart.svg'),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 6.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'price after discount',
+                        style: AppTextStyles.regular12,
                       ),
-                      children: [
-                        TextSpan(
-                          text: ' 50% off',
-                          style: AppTextStyles.small10.copyWith(
-                            color: const Color(0xFFFE735C),
+                      RichText(
+                        text: TextSpan(
+                          text: '\$${productEntity.price}',
+                          style: AppTextStyles.small12.copyWith(
+                            decoration: TextDecoration.lineThrough,
+                            color: const Color(0xFFBBBBBB),
                           ),
+                          children: [
+                            TextSpan(
+                              text: ' 50% off',
+                              style: AppTextStyles.small10.copyWith(
+                                decoration: TextDecoration.none,
+                                color: const Color(0xFFFE735C),
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
+                      )
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
           Positioned(

@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:stylish/core/entities/product_entity.dart';
 import 'package:stylish/core/models/review_model.dart';
 
@@ -9,8 +8,7 @@ class ProductModel {
   final String code;
   final String description;
   final int sellingCount;
-  String? imageUrl;
-  final File imageFile;
+  final String imageUrl;
   final num avgRating;
   final num ratingCount;
   final List<ReviewModel> reviews;
@@ -22,8 +20,7 @@ class ProductModel {
     required this.code,
     required this.description,
     required this.sellingCount,
-    this.imageUrl,
-    required this.imageFile,
+    required this.imageUrl,
     required this.reviews,
     this.avgRating = 0,
     this.ratingCount = 0,
@@ -36,21 +33,21 @@ class ProductModel {
       code: json['code'],
       description: json['description'],
       sellingCount: json['sellingCount'],
-      imageFile: File(json['imageUrl']),
+      imageUrl: json['imageUrl'],
       reviews: json['reviews'] != null
           ? List<ReviewModel>.from(
               json['reviews'].map((review) => ReviewModel.fromJson(review)))
           : [],
     );
   }
- ProductEntity toEntity() {
+  ProductEntity toEntity() {
     return ProductEntity(
       name: name,
       category: category,
       price: price,
       code: code,
       description: description,
-      imageFile: imageFile,
+    imageUrl: imageUrl,
       reviews: reviews.map((e) => e.toEntity()).toList(),
     );
   }

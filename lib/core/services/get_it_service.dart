@@ -1,4 +1,6 @@
 import 'package:get_it/get_it.dart';
+import 'package:stylish/core/repos/products_repo/products_repo.dart';
+import 'package:stylish/core/repos/products_repo/products_repo_imp.dart';
 import 'package:stylish/core/services/database_service.dart';
 import 'package:stylish/core/services/fire_base_auth_service.dart';
 import 'package:stylish/core/services/firestore_service.dart';
@@ -13,6 +15,11 @@ void setupGetIt() {
     AuthRepoImp(
       fireBaseAuthService: getIt<FireBaseAuthService>(),
       databaseService: getIt<DatabaseService>(),
+    ),
+  );
+  getIt.registerSingleton<ProductsRepo>(
+    ProductsRepoImp(
+      getIt<DatabaseService>(),
     ),
   );
 }
