@@ -6,8 +6,8 @@ import 'package:stylish/core/helper_functions/get_dummy_product.dart';
 import 'package:stylish/core/widgets/custom_error_widget.dart';
 import 'package:stylish/features/home/presentation/views/widgets/trending_product_grid_view.dart';
 
-class TrendingProductGridViewBlocBuilder extends StatelessWidget {
-  const TrendingProductGridViewBlocBuilder({
+class ProductsGridViewBlocBuilder extends StatelessWidget {
+  const ProductsGridViewBlocBuilder({
     super.key,
   });
 

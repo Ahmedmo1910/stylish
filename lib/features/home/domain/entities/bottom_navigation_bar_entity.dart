@@ -26,9 +26,9 @@ List<BottomNavigationBarEntity> get bottomNavigationBarItem => [
         name: 'Cart',
       ),
       BottomNavigationBarEntity(
-        activeImage: 'assets/icons/search.svg',
-        inactiveImage: 'assets/icons/search.svg',
-        name: 'Search',
+        activeImage: 'assets/icons/products.svg',
+        inactiveImage: 'assets/icons/products.svg',
+        name: 'Products',
       ),
       BottomNavigationBarEntity(
         activeImage: 'assets/icons/settings.svg',

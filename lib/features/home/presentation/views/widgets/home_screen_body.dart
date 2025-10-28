@@ -6,7 +6,7 @@ import 'package:stylish/features/home/presentation/views/widgets/best_selling.da
 import 'package:stylish/features/home/presentation/views/widgets/featured_categories.dart';
 import 'package:stylish/features/home/presentation/views/widgets/featured_filter.dart';
 import 'package:stylish/features/home/presentation/views/widgets/featured_list.dart';
-import 'package:stylish/features/home/presentation/views/widgets/trending_product_grid_view_bloc_builder.dart';
+import 'package:stylish/features/home/presentation/views/widgets/products_grid_view_bloc_builder.dart';
 
 class HomeScreenBody extends StatefulWidget {
   const HomeScreenBody({
@@ -46,7 +46,7 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
               ],
             ),
           ),
-          TrendingProductGridViewBlocBuilder(),
+          ProductsGridViewBlocBuilder(),
         ],
       ),
     );

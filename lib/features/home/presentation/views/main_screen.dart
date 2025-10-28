@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:stylish/features/home/presentation/views/products_screen.dart';
 import 'package:stylish/features/home/presentation/views/widgets/custom_bottom_navigation_bar.dart';
 import 'package:stylish/features/home/presentation/views/widgets/home_screen.dart';
 import 'widgets/custom_drawer.dart';
 
-class MainScreen extends StatelessWidget {
+class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
 
   static const String routeName = 'mainScreen';
 
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,9 +32,25 @@ class MainScreen extends StatelessWidget {
         ],
       ),
       drawer: const CustomDrawer(),
-      bottomNavigationBar: const CustomBottomNavigationBar(),
+      bottomNavigationBar: CustomBottomNavigationBar(
+        currentIndex: currentIndex,
+        onTap: (index) {
+          setState(() {
+            currentIndex = index;
+          });
+        },
+      ),
       backgroundColor: const Color(0xFFFDFDFD),
-      body: const HomeScreen(),
+      body: IndexedStack(
+        index: currentIndex,
+        children: [
+          const HomeScreen(),
+          Container(),
+          Container(),
+          const ProductsScreen(),
+          Container(),
+        ],
+      ),
     );
   }
 }
