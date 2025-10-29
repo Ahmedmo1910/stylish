@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:stylish/features/home/presentation/views/cart_screen.dart';
 import 'package:stylish/features/home/presentation/views/products_screen.dart';
 import 'package:stylish/features/home/presentation/views/widgets/custom_bottom_navigation_bar.dart';
 import 'package:stylish/features/home/presentation/views/widgets/home_screen.dart';
@@ -46,7 +47,7 @@ class _MainScreenState extends State<MainScreen> {
         children: [
           const HomeScreen(),
           Container(),
-          Container(),
+          const CartScreen(),
           const ProductsScreen(),
           Container(),
         ],
