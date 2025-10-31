@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:skeletonizer/skeletonizer.dart';
+import 'package:stylish/core/cubits/cart_cubit/cart_cubit.dart';
 import 'package:stylish/core/entities/product_entity.dart';
 import 'package:stylish/core/utils/app_text_styles.dart';
 import 'package:stylish/core/widgets/custom_product_image.dart';
@@ -53,7 +55,7 @@ class ProductItem extends StatelessWidget {
                   ),
                   trailing: IconButton(
                     onPressed: () {
-                      print('Cart button pressed');
+                    context.read<CartCubit>().addToCart(productEntity);
                     },
                     icon: SvgPicture.asset('assets/icons/cart.svg'),
                   ),

@@ -19,7 +19,9 @@ class CartScreenBody extends StatelessWidget {
             ],
           ),
         ),
-        const CartItemList(),
+        const CartItemList(
+           cartItems: [],
+         ),
         SliverToBoxAdapter(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 16.0),
