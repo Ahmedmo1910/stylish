@@ -15,9 +15,14 @@ class MainScreenBodyBlocListener extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<CartCubit, CartState>(
         listener: (context, state) {
-          if (state is CartProductAdded) {
+          if (state is CartItemAdded) {
             ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
               content: Text('Product added to cart!'),
+            ));
+          }
+          if (state is CartItemRemoved) {
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              content: Text('Product removed from cart!'),
             ));
           }
         },

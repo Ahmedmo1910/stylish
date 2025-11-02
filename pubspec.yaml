@@ -52,6 +52,7 @@ dependencies:
   flutter_svg_provider: ^1.0.7
   skeletonizer: ^2.1.0+1
   cached_network_image: ^3.4.1
+  equatable: ^2.0.7
 
 dev_dependencies:
   flutter_test:

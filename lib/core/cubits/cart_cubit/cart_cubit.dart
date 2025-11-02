@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:stylish/core/entities/product_entity.dart';
 import 'package:stylish/features/home/domain/entities/cart_entity.dart';
+import 'package:stylish/features/home/domain/entities/cart_item_entity.dart';
 
 part 'cart_state.dart';
 
@@ -19,6 +20,11 @@ class CartCubit extends Cubit<CartState> {
       cartEntity.cartItems.add(cartItem);
     }
 
-    emit(CartProductAdded());
+    emit(CartItemAdded());
+  }
+
+  void deleteCartItem(CartItemEntity cartItem) {
+    cartEntity.deleteCartItem(cartItem);
+    emit(CartItemRemoved());
   }
 }

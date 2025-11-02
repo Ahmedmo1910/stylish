@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stylish/core/cubits/cart_cubit/cart_cubit.dart';
 import 'package:stylish/core/widgets/custom_button.dart';
 import 'package:stylish/features/home/presentation/views/widgets/cart_header.dart';
 import 'package:stylish/features/home/presentation/views/widgets/cart_item_list.dart';
@@ -15,23 +17,23 @@ class CartScreenBody extends StatelessWidget {
             children: [
               CartHeader(),
               SizedBox(height: 16.0),
-              
             ],
           ),
         ),
-        const CartItemList(
-           cartItems: [],
-         ),
+        CartItemList(
+          cartItems: context.watch<CartCubit>().cartEntity.cartItems,
+        ),
         SliverToBoxAdapter(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 16.0),
+            padding:
+                const EdgeInsets.symmetric(horizontal: 12.0, vertical: 16.0),
             child: MainButton(
               text: 'Proceed to Payment',
               hasCircularBorder: true,
               onTap: () {},
             ),
           ),
-        )
+        ),
       ],
     );
   }
